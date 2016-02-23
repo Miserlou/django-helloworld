@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Hello World, Zappa!</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <style>
+    /* Sticky footer styles
+    -------------------------------------------------- */
+    html {
+      position: relative;
+      min-height: 100%;
+    }
+    body {
+      /* Margin bottom by footer height */
+      margin-bottom: 60px;
+    }
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      /* Set the fixed height of the footer here */
+      height: 60px;
+      background-color: #f5f5f5;
+    }
+
+
+    /* Custom page CSS
+    -------------------------------------------------- */
+    /* Not required for template or sticky footer method. */
+
+    .container {
+      width: auto;
+      max-width: 680px;
+      padding: 0 15px;
+    }
+    .container .text-muted {
+      margin: 20px 0;
+    }
+
+    </style>
+  </head>
+  <body>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1>Hello from <b><a href="https://github.com/Miserlou/django-zappa">django-zappa</a></b>!</h1>
+      </div>
+      <p class="lead">This page is being served by <b><a href="https://github.com/Miserlou/Zappa">Zappa</a></b> through AWS Lambda through API Gateway.</p>
+      <p>By the time you're reading this, the server is already dead.</p>
+
+      <p>
+        <pre>{{debug}}</pre>
+      </p>
+
+      <p>
+        <pre>{{cookies}}</pre>
+      </p>
+
+      <p>
+        <ul>
+          <li>
+            <a href="{% url 'json_example' %}">See a different Content-Type!</a>
+          </li>
+          <li>
+            <a href="{% url 'post_echo' %}">Post echo</a>
+          </li>
+          <li>
+            <a href="{% url 'admin:index' %}">See a 301!</a>
+          </li>
+          <li>
+            <a href="/derp/this_doesnt_exist">See a 404!</a>
+          </li>
+        </ul>
+      </p>
+
+      <h3>Posts</h3>
+        {% for post in posts %}
+        <div class="panel panel-default">
+          <div class="panel-heading">{{post.title}}</div>
+          <div class="panel-body">
+            {{post.body}}
+          </div>
+        </div>
+        {% endfor %}
+
+      <h3>Add Post</h3>
+        <form method="post">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" value="Add Post"></input>
+        </form>
+
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">By Rich Jones for Gun.io</p>
+      </div>
+    </footer>
+
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </body>
+</html>
