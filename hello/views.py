@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -51,3 +53,9 @@ def json_example(request):
 
     loaded = json.dumps(response)
     return HttpResponse(loaded, content_type='application/json')
+
+def unicode_401(request):
+
+    response = 'مرحبا يا عالم'
+    return HttpResponse(response, status=401)
+
