@@ -26,8 +26,10 @@ def home(request):
             error = submitted
 
     debug = str(request.META)
-    posts = Post.objects.all()
-    form = PostForm
+    #posts = Post.objects.all()
+    #form = PostForm
+    posts = [] 
+    form = None 
 
     cookies = str(request.COOKIES)
 
